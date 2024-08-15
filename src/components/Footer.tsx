@@ -105,7 +105,8 @@ const Footer = () => {
             </a>
           </div>
           <div>
-            <button className="group bg-primary w-[134px] h-[48px] rounded-full font-aeonik font-normal flex gap-2 items-center justify-center text-[#E8F1F8]">
+           <a href="https://t.me/atarnobx" target="_blank">
+           <button className="group bg-primary w-[134px] h-[48px] rounded-full font-aeonik font-normal flex gap-2 items-center justify-center text-[#E8F1F8]">
               <svg
                 width="20"
                 height="17"
@@ -121,6 +122,7 @@ const Footer = () => {
               </svg>
               Telegram
             </button>
+           </a>
           </div>
         </div>
       </div>
@@ -177,7 +179,9 @@ const Footer = () => {
 
           <div className="flex flex-col justify-between items-center md:items-end gap-10">
             <div className="flex justify-end md:justify-end w-full">
-              <button className="bg-primary w-[134px] h-[48px] rounded-full font-normal flex gap-2 items-center font-aeonik text-[16px] justify-center  text-[#E8F1F8]">
+            
+            <a href="https://t.me/atarnobx">
+            <button className="bg-primary w-[134px] h-[48px] rounded-full font-normal flex gap-2 items-center font-aeonik text-[16px] justify-center  text-[#E8F1F8]">
                 <Image
                   src={"/telegram.svg"}
                   width={20}
@@ -186,6 +190,7 @@ const Footer = () => {
                 />{" "}
                 Telegram
               </button>
+            </a>
             </div>
             <div>
               <p className="text-[#717F8E] font-light text-[10px] text-right">

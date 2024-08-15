@@ -54,7 +54,8 @@ const Navbar = () => {
           >
             <li>CONTACT</li>
           </Link>
-          <button className="group bg-primary w-[134px] h-[48px] font-normal rounded-full flex gap-2 items-center justify-center text-[#E8F1F8]">
+      <a href="https://t.me/atarnobx" target="_blank">
+      <button className="group bg-primary w-[134px] h-[48px] font-normal rounded-full flex gap-2 items-center justify-center text-[#E8F1F8]">
             <svg
               width="20"
               height="17"
@@ -70,6 +71,7 @@ const Navbar = () => {
             </svg>
             Telegram
           </button>
+      </a>
         </div>
 
       
@@ -123,7 +125,8 @@ const Navbar = () => {
         >
           <li>CONTACT</li>
         </Link>
-        <button className="bg-primary text-center mt-[57px] w-[134px] h-[48px] font-normal text-[16px] rounded-full flex gap-2 items-center justify-center text-[#E8F1F8]">
+     <a href="https://t.me/atarnobx" target="_blank">
+     <button className="bg-primary text-center mt-[57px] w-[134px] h-[48px] font-normal text-[16px] rounded-full flex gap-2 items-center justify-center text-[#E8F1F8]">
           <Image
             src={"/telegram.svg"}
             width={20}
@@ -132,6 +135,7 @@ const Navbar = () => {
           />{" "}
           Telegram
         </button>
+     </a>
       </div>
     </div>
     </>
