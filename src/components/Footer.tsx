@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <div
       className={`bg-mydark  min-h-[49px] pb-[54px] ${
-        pathname.includes("/studio") && "hidden z-0"
+        pathname.includes("/studio") ? "hidden z-0" : ""
       }`}
     >
       <div className=" max-w-[1324px] overflow-x-hidden  mx-auto  hidden lg:block px-[16px] 2xl:px-0">
@@ -35,7 +35,7 @@ const Footer = () => {
                     fill="#CCDAE7"
                     stroke="#CCDAE7"
                     className="group-hover:fill-primary transition"
-                    stroke-width="0.2"
+                    strokeWidth="0.2"
                   />
                 </svg>
               </div>
@@ -56,7 +56,7 @@ const Footer = () => {
                     fill="#CCDAE7"
                     stroke="#CCDAE7"
                     className="group-hover:fill-primary transition"
-                    stroke-width="0.2"
+                    strokeWidth="0.2"
                   />
                 </svg>
               </div>
@@ -77,7 +77,7 @@ const Footer = () => {
                     fill="#CCDAE7"
                     stroke="#CCDAE7"
                     className="group-hover:fill-primary transition"
-                    stroke-width="0.2"
+                    strokeWidth="0.2"
                   />
                 </svg>
               </div>
@@ -98,7 +98,7 @@ const Footer = () => {
                     fill="#CCDAE7"
                     stroke="#CCDAE7"
                     className="group-hover:fill-primary transition"
-                    stroke-width="0.2"
+                    strokeWidth="0.2"
                   />
                 </svg>
               </div>

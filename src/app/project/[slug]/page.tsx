@@ -1,7 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
 import { sanityClient } from "../../../../sanity/lib/client";
-import { Project } from "../../../../lib/types";
+import type { Project } from "../../../../lib/types";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import Image from "next/image";
@@ -68,16 +68,27 @@ const Project = () => {
     getProjectData();
   }, [slug]);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   if (loading) {
     return (
-      <div className="min-h-screen h-full bg-mydark flex justify-center items-center">
-        <div className="pt-[145px] md:pt-[90px] text-mygray lg:max-w-6xl lg:mx-auto ">
-          <h2>Loading...</h2>
+      <div className="min-h-screen bg-mydark overflow-x-hidden">
+        <div className="lg:pt-24 max-w-[1624px] mx-auto px-[16px] 2xl:px-0 pt-[52px] animate-pulse">
+          <div className="border-b pb-[55px] pt-16 border-[#414C56]/50 grid grid-cols-1 lg:grid-cols-3 gap-y-8 max-w-[1324px] mx-auto">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="space-y-4">
+                <div className="h-4 w-24 rounded bg-[#0E1720]" />
+                <div className="h-3 w-36 rounded bg-[#0E1720]" />
+              </div>
+            ))}
+          </div>
+          <div className="pt-[55px] max-w-[1324px] mx-auto space-y-6">
+            <div className="h-12 lg:h-16 w-3/4 lg:w-1/2 rounded bg-[#0E1720]" />
+            <div className="space-y-3 lg:w-[70%]">
+              <div className="h-4 w-full rounded bg-[#0E1720]" />
+              <div className="h-4 w-5/6 rounded bg-[#0E1720]" />
+            </div>
+          </div>
         </div>
+        <div className="mx-[20px] mt-[90px] h-[300px] lg:h-[600px] bg-[#0E1720] animate-pulse" />
       </div>
     );
   }
@@ -169,8 +180,9 @@ const Project = () => {
             {project?.description}
           </p>
         </div>
+      </div>
 
-        <div className="mt-[90px] flex flex-col w-full h-full gap-y-[6px]">
+      <div className="mt-[90px] flex flex-col w-full h-full gap-y-[6px] px-[20px]">
           {project?.media?.length ? (
             project.media
               .filter(
@@ -188,18 +200,19 @@ const Project = () => {
                   {med.type === "photo" ? (
                     <Image
                       src={med.photo.asset.url}
-                      width={1600}
-                      height={848}
+                      width={2560}
+                      height={1357}
+                      sizes="100vw"
                       alt="project-img"
+                      className="w-full h-auto"
                     />
                   ) : (
                     <video
-                      width={1600}
-                      height={848}
                       autoPlay
                       muted
                       loop
-                      className="object-cover hover:scale-100 scale-105 transition-all duration-500"
+                      playsInline
+                      className="w-full h-auto object-cover"
                     >
                       <source src={med.video.asset.url} type="video/mp4" />
                     </video>
@@ -212,9 +225,9 @@ const Project = () => {
             </p>
           )}
         </div>
-        <div className="lg:pt-60 lg:pb-40 pt-28 pb-20">
-          <ConnectSection />
-        </div>
+
+      <div className="lg:pt-60 lg:pb-40 pt-28 pb-20 text-mygray">
+        <ConnectSection />
       </div>
     </div>
   );

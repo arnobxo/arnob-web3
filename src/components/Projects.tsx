@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { Project } from "../../lib/types";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -68,7 +68,7 @@ const Projects = ({ projects }: { projects: Project[] }) => {
           <button
             onClick={() => handleCategoryChange("All")}
             className={`hover:text-primary transition-all ${
-              category === "All" && "text-primary underline"
+              category === "All" ? "text-primary underline" : ""
             }`}
           >
             ALL
@@ -77,7 +77,7 @@ const Projects = ({ projects }: { projects: Project[] }) => {
           <button
             onClick={() => handleCategoryChange("Web3")}
             className={`hover:text-primary transition-all ${
-              category === "Web3" && "text-primary underline"
+              category === "Web3" ? "text-primary underline" : ""
             }`}
           >
             WEB3.0 PROJECTS
@@ -86,8 +86,9 @@ const Projects = ({ projects }: { projects: Project[] }) => {
           <button
             onClick={() => handleCategoryChange("Brand Identity & Logo Design")}
             className={`hover:text-primary transition-all ${
-              category === "Brand Identity & Logo Design" &&
-              "text-primary underline"
+              category === "Brand Identity & Logo Design"
+                ? "text-primary underline"
+                : ""
             }`}
           >
             BRAND IDENTITY
@@ -96,7 +97,7 @@ const Projects = ({ projects }: { projects: Project[] }) => {
           <button
             onClick={() => handleCategoryChange("Graphic Experimentation")}
             className={`hover:text-primary transition-all ${
-              category === "Graphic Experimentation" && "text-primary underline"
+              category === "Graphic Experimentation" ? "text-primary underline" : ""
             }`}
           >
             GRAPHIC EXPERIMENTATION
@@ -113,7 +114,7 @@ const Projects = ({ projects }: { projects: Project[] }) => {
           <button
             onClick={() => handleCategoryChange("All")}
             className={`hover:text-primary transition-all ${
-              category === "All" && "text-primary underline"
+              category === "All" ? "text-primary underline" : ""
             }`}
           >
             ALL
@@ -122,7 +123,7 @@ const Projects = ({ projects }: { projects: Project[] }) => {
           <button
             onClick={() => handleCategoryChange("Web3")}
             className={`hover:text-primary transition-all ${
-              category === "Web3" && "text-primary underline"
+              category === "Web3" ? "text-primary underline" : ""
             }`}
           >
             WEB3.0 PROJECTS
@@ -131,8 +132,9 @@ const Projects = ({ projects }: { projects: Project[] }) => {
           <button
             onClick={() => handleCategoryChange("Brand Identity & Logo Design")}
             className={`hover:text-primary transition-all ${
-              category === "Brand Identity & Logo Design" &&
-              "text-primary underline"
+              category === "Brand Identity & Logo Design"
+                ? "text-primary underline"
+                : ""
             }`}
           >
             BRAND IDENTITY & LOGO DESIGN
@@ -141,7 +143,7 @@ const Projects = ({ projects }: { projects: Project[] }) => {
           <button
             onClick={() => handleCategoryChange("Graphic Experimentation")}
             className={`hover:text-primary transition-all ${
-              category === "Graphic Experimentation" && "text-primary underline"
+              category === "Graphic Experimentation" ? "text-primary underline" : ""
             }`}
           >
             GRAPHIC EXPERIMENTATION

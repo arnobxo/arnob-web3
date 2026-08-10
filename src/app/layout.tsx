@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import GlobalWrapper from "@/components/GlobalWrapper";
+import NextTopLoader from "nextjs-toploader";
 
 const baseNeue = localFont({
   variable: "--font-base-neue",
@@ -108,6 +109,7 @@ export default function RootLayout({
       <body
         className={`${baseNeue.variable} ${aeonik.variable} font-baseNeue overflow-x-hidden text-mygray bg-mydark`}
       >
+        <NextTopLoader color="#F74A53" height={3} showSpinner={false} />
         <Navbar />
         <Toaster />
         <GlobalWrapper>{children}</GlobalWrapper>
