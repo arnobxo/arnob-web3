@@ -11,14 +11,18 @@ const BlogSection = ({ posts }) => {
       {" "}
       <div className="mt-[45px] lg:mt-[107px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[42px] gap-y-[36px] mb-[292px]">
         {posts &&
-          posts.map((post, index) => (
-            <Link key={post?._id} href={`thoughts/${post?.slug?.current}`}>
+          posts
+            .filter((post) => post?.slug?.current)
+            .map((post, index) => (
+            <Link key={post?._id} href={`/thoughts/${post.slug.current}`}>
             <div  className="rounded-[12px] h-400 overflow-hidden border border-[#16212A]">
-              <img
-                src={post.mainImage?.asset?.url}
-                className="w-full object-cover"
-                alt=""
-              />
+              {post.mainImage?.asset?.url && (
+                <img
+                  src={post.mainImage.asset.url}
+                  className="w-full object-cover"
+                  alt={post?.title || ""}
+                />
+              )}
 
               <div className="p-[24px] bg-[#08131D] font-aeonik font-medium">
                 <div className="mb-[15px]  text-[12px] flex gap-3">

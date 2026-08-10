@@ -46,7 +46,10 @@ const Projects = ({ projects }: { projects: Project[] }) => {
       },
       { rootMargin: getRootMargin() }
     );
-    observer.observe(categoryRef.current!);
+    if (categoryRef.current) {
+      observer.observe(categoryRef.current);
+    }
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -147,7 +150,9 @@ const Projects = ({ projects }: { projects: Project[] }) => {
       </motion.div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 w-full gap-y-[40px] sm:gap-y-[108px] sm:gap-x-[36px] mt-[32px] sm:mt-[88px]">
-        {projectsData.map((project) => (
+        {projectsData
+          .filter((project) => project?.slug?.current)
+          .map((project) => (
           <Link
             key={project._id}
             className="group"
@@ -159,16 +164,18 @@ const Projects = ({ projects }: { projects: Project[] }) => {
               transition={{ duration: 0.6, ease: "easeInOut" }}
               className="cursor-pointer w-full lg:w-full mx-auto"
             >
-              <div className="relative  h-[220px] mx-auto  lg:h-[481px] overflow-hidden rounded-[16px] md:rounded-[32px]  w-full ">
-                {project.mainImage?.type == "image" && (
+              <div className="relative  h-[220px] mx-auto  lg:h-[481px] overflow-hidden rounded-[16px] md:rounded-[32px]  w-full bg-[#08131D] ">
+                {project.mainImage?.type == "image" &&
+                  project.mainImage?.image?.asset?.url && (
                   <Image
-                    src={project?.mainImage?.image?.asset?.url}
+                    src={project.mainImage.image.asset.url}
                     fill
-                    alt="mad-meta-scientist"
+                    alt={project.title || "project"}
                     className="object-cover hover:scale-100 scale-105   transition-all duration-500"
                   />
                 )}
-                {project.mainImage.type == "video" && (
+                {project.mainImage?.type == "video" &&
+                  project.mainImage?.video?.asset?.url && (
                   <video
                     width="100%"
                     autoPlay
@@ -178,7 +185,7 @@ const Projects = ({ projects }: { projects: Project[] }) => {
                     className="object-cover hover:scale-100 scale-105 transition-all duration-500"
                   >
                     <source
-                      src={project?.mainImage?.video?.asset?.url}
+                      src={project.mainImage.video.asset.url}
                       type="video/mp4"
                     />
                   </video>

@@ -7,9 +7,10 @@ import { sanityClient } from "../../sanity/lib/client";
 import Services from "./_components/Services";
 import ScrollMarquee from "./_components/ScrollMarquee";
 
-export default async function Home() {
-  const projects = await sanityClient.fetch<Project[]>({
-    query: `
+async function getProjects(): Promise<Project[]> {
+  try {
+    const projects = await sanityClient.fetch<Project[]>({
+      query: `
     *[_type == 'project'] {
       _id,
       title,
@@ -38,8 +39,17 @@ export default async function Home() {
       }
     }
 `,
-    config: { cache: "no-cache" },
-  });
+      config: { cache: "no-cache" },
+    });
+    return projects ?? [];
+  } catch (error) {
+    console.error("Failed to fetch projects from Sanity:", error);
+    return [];
+  }
+}
+
+export default async function Home() {
+  const projects = await getProjects();
 
   return (
     <>

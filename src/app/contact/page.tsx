@@ -50,12 +50,14 @@ const Contact = () => {
       .then(
         (result) => {
           toast.success("Quote has been sent. I will contact you very soon");
+          reset();
         },
         (error) => {
-          toast.error(error.text);
+          toast.error(
+            error?.text || "Could not send your message. Please try again."
+          );
         }
       );
-    reset();
   };
 
   return (

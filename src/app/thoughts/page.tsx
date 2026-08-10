@@ -2,11 +2,11 @@ import BlogSection from "@/app/thoughts/_components/BlogSection";
 
 import { sanityClient } from "../../../sanity/lib/client";
 
-const Thoughts = async () => {
-
-  const posts = await sanityClient.fetch({
-    query: `
-    *[_type == "post"] {
+async function getPosts() {
+  try {
+    const posts = await sanityClient.fetch({
+      query: `
+    *[_type == "post"] | order(publishedAt desc) {
       _id,
       title,
       slug,
@@ -24,10 +24,17 @@ const Thoughts = async () => {
       body,
     }
 `,
-    config: { cache: "no-cache" },
-  });
+      config: { cache: "no-cache" },
+    });
+    return posts ?? [];
+  } catch (error) {
+    console.error("Failed to fetch posts from Sanity:", error);
+    return [];
+  }
+}
 
-
+const Thoughts = async () => {
+  const posts = await getPosts();
 
   return (
     <div className="min-h-screen bg-mydark flex   flex-col overflow-x-hidden max-w-[1324px] px-[16px] 2xl:px-0 mx-auto">
