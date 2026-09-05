@@ -11,7 +11,7 @@ async function getProjects(): Promise<Project[]> {
   try {
     const projects = await sanityClient.fetch<Project[]>({
       query: `
-    *[_type == 'project'] | order(orderRank) {
+    *[_type == 'project'] | order(orderRank asc, _createdAt asc) {
       _id,
       title,
       description,
