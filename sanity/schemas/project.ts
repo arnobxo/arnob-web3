@@ -1,10 +1,15 @@
 import { defineField, defineType } from "sanity";
+import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-list";
 
 export default defineType({
   name: "project",
   title: "Project",
   type: "document",
+  orderings: [orderRankOrdering],
   fields: [
+    // Hidden field that stores the drag-and-drop position set in the
+    // "Projects" list in the Studio. New projects are added at the top.
+    orderRankField({ type: "project", newItemPosition: "before" }),
     defineField({
       name: "title",
       title: "Title",
